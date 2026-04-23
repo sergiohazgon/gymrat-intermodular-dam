@@ -14,7 +14,7 @@ Muchas personas entrenan sin una planificación clara. GymRat busca ofrecer una 
 - Git y GitHub
 
 ## Estado del proyecto
-Proyecto en fase inicial de análisis y planificación.
+Proyecto en fase 2 implementar la base funcional de la aplicación.
 
 ## Estructura del repositorio
 - `/src` → código fuente
