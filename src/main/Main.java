@@ -1,5 +1,6 @@
 package main;
 
+import database.DBconnection;
 import model.Ejercicio;
 import model.Rutina;
 
@@ -10,6 +11,7 @@ public class Main {
 
     public static void main(String[] args) {
 
+        DBconnection.getConnection();
         Scanner sc = new Scanner(System.in);
         int opcion;
 
