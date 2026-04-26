@@ -1,10 +1,10 @@
 package main;
 
 import database.DBconnection;
+import dao.EjercicioDAO;
 import model.Ejercicio;
-import model.Rutina;
 
-import java.time.LocalDate;
+
 import java.util.Scanner;
 
 public class Main {
@@ -12,6 +12,7 @@ public class Main {
     public static void main(String[] args) {
 
         DBconnection.getConnection();
+        EjercicioDAO ejercicioDAO = new EjercicioDAO();
         Scanner sc = new Scanner(System.in);
         int opcion;
 
@@ -31,11 +32,23 @@ public class Main {
             switch (opcion) {
 
                 case 1:
-                    System.out.println("Mostrando ejercicios...");
+                    System.out.println("\n--- Ejercicios disponibles ---");
+
+                    for (Ejercicio ejercicio : ejercicioDAO.listarEjercicios()) {
+                        System.out.println(ejercicio);
+                    }
                     break;
 
                 case 2:
-                    System.out.println("Buscar por músculo...");
+                    System.out.print("Introduce grupo muscular: ");
+                    String grupo = sc.nextLine();
+
+                    System.out.println("\n--- Resultados ---");
+
+                    for (Ejercicio ejercicio : ejercicioDAO.buscarPorGrupoMuscular(grupo)) {
+                        System.out.println(ejercicio);
+                    }
+
                     break;
 
                 case 3:
