@@ -27,8 +27,9 @@ public class Main {
             System.out.println("2. Buscar ejercicios por músculo");
             System.out.println("3. Ver rutinas");
             System.out.println("4. Ver ejercicios de una rutina");
-            System.out.println("5. Crear rutina");
-            System.out.println("6. Salir");
+            System.out.println("5. Añadir ejercicios a una rutina");
+            System.out.println("6. Crear rutina");
+            System.out.println("7. Salir");
             System.out.print("Elige una opción: ");
 
             opcion = sc.nextInt();
@@ -73,10 +74,59 @@ public class Main {
                     break;
 
                 case 5:
-                    System.out.println("Crear rutina...");
+                    System.out.println("\n--- Rutinas disponibles ---");
+                    for (Rutina rutina : rutinaDAO.listarRutinas()) {
+                        System.out.println(rutina);
+                    }
+
+
+                    System.out.print("Introduce el id de la rutina: ");
+                    int idRutinaInsertar = sc.nextInt();
+                    sc.nextLine();
+
+                    String continuar;
+
+                    do {
+                    System.out.println("\n--- Ejercicios disponibles ---");
+                    for (Ejercicio ejercicio : ejercicioDAO.listarEjercicios()) {
+                        System.out.println(ejercicio);
+                    }
+
+                    System.out.print("Introduce el id del ejercicio: ");
+                    int idEjercicioAgregar = sc.nextInt();
+                    sc.nextLine();
+
+                    System.out.print("Series: ");
+                    int series = sc.nextInt();
+                    sc.nextLine();
+
+                    System.out.print("Repeticiones: ");
+                    int repeticiones = sc.nextInt();
+                    sc.nextLine();
+
+                    System.out.print("Orden en la rutina: ");
+                    int orden = sc.nextInt();
+                    sc.nextLine();
+
+                    rutinaDAO.insertarEjercicioRutina(
+                            idRutinaInsertar,
+                            idEjercicioAgregar,
+                            series,
+                            repeticiones,
+                            orden
+                    );
+                    System.out.print("¿Quieres añadir otro ejercicio a esta rutina? (si/no): ");
+                    continuar = sc.nextLine().toLowerCase();
+
+            } while (continuar.equalsIgnoreCase("si"));
+
                     break;
 
                 case 6:
+                    System.out.println("Crear rutina...");
+                    break;
+
+                case 7:
                     System.out.println("Saliendo de GymRat...");
                     break;
 
@@ -84,7 +134,7 @@ public class Main {
                     System.out.println("Opción no válida.");
             }
 
-        } while (opcion != 6);
+        } while (opcion != 7);
 
         sc.close();
     }

@@ -95,5 +95,46 @@ public class RutinaDAO {
         }
     }
 
-    
+    public void insertarEjercicioRutina(int idRutina, int idEjercicio,
+                                        int series, int repeticiones, int orden) {
+
+        String sqlActualizarOrdenes = """
+            UPDATE rutina_ejercicio
+            SET orden = orden + 1
+            WHERE id_rutina = ?
+            AND orden >= ?
+            """;
+
+        String sqlInsertar = """
+            INSERT INTO rutina_ejercicio (id_rutina, id_ejercicio, series, repeticiones, orden)
+            VALUES (?, ?, ?, ?, ?)
+            """;
+
+        try {
+            Connection connection = DBconnection.getConnection();
+
+            PreparedStatement preparedStatementActualizar = connection.prepareStatement(sqlActualizarOrdenes);
+
+            preparedStatementActualizar.setInt(1, idRutina);
+            preparedStatementActualizar.setInt(2, orden);
+
+            preparedStatementActualizar.executeUpdate();
+
+            PreparedStatement preparedStatementInsertar= connection.prepareStatement(sqlInsertar);
+
+            preparedStatementInsertar.setInt(1, idRutina);
+            preparedStatementInsertar.setInt(2, idEjercicio);
+            preparedStatementInsertar.setInt(3, series);
+            preparedStatementInsertar.setInt(4, repeticiones);
+            preparedStatementInsertar.setInt(5, orden);
+
+            preparedStatementInsertar.executeUpdate();
+
+            System.out.println("Ejercicio añadido correctamente a la rutina.");
+
+        } catch (SQLException e) {
+            System.out.println("Error al añadir ejercicio a la rutina.");
+            System.out.println(e.getMessage());
+        }
+    }
 }
