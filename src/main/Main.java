@@ -28,8 +28,9 @@ public class Main {
             System.out.println("3. Ver rutinas");
             System.out.println("4. Ver ejercicios de una rutina");
             System.out.println("5. Añadir ejercicios a una rutina");
-            System.out.println("6. Crear rutina");
-            System.out.println("7. Salir");
+            System.out.println("6. Eliminar ejercicio de una rutina");
+            System.out.println("7. Crear rutina");
+            System.out.println("8. Salir");
             System.out.print("Elige una opción: ");
 
             opcion = sc.nextInt();
@@ -123,10 +124,30 @@ public class Main {
                     break;
 
                 case 6:
-                    System.out.println("Crear rutina...");
+                    System.out.println("\n--- Rutinas disponibles ---");
+                    for (Rutina rutina : rutinaDAO.listarRutinas()) {
+                        System.out.println(rutina);
+                    }
+
+                    System.out.print("Introduce el id de la rutina: ");
+                    int idRutinaEliminar = sc.nextInt();
+                    sc.nextLine();
+
+                    rutinaDAO.mostrarEjerciciosDeRutina(idRutinaEliminar);
+
+                    System.out.print("Introduce el número de orden del ejercicio que quieres eliminar: ");
+                    int ordenEliminar = sc.nextInt();
+                    sc.nextLine();
+
+                    rutinaDAO.eliminarEjercicioDeRutinaPorOrden(idRutinaEliminar, ordenEliminar);
+
                     break;
 
                 case 7:
+                    System.out.println("Crear rutina...");
+                    break;
+
+                case 8:
                     System.out.println("Saliendo de GymRat...");
                     break;
 
@@ -134,7 +155,7 @@ public class Main {
                     System.out.println("Opción no válida.");
             }
 
-        } while (opcion != 7);
+        } while (opcion != 8);
 
         sc.close();
     }

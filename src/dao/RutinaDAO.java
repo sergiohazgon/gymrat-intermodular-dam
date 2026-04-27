@@ -137,4 +137,99 @@ public class RutinaDAO {
             System.out.println(e.getMessage());
         }
     }
+
+    public void eliminarEjercicioDeRutinaPorOrden(int idRutina, int orden) {
+
+        String sqlBuscar = """
+            SELECT e.nombre
+            FROM rutina_ejercicio re
+            JOIN ejercicio e ON re.id_ejercicio = e.id_ejercicio
+            WHERE re.id_rutina = ?
+            AND re.orden = ?
+            """;
+
+        String sqlDelete = """
+            DELETE FROM rutina_ejercicio
+            WHERE id_rutina = ?
+            AND orden = ?
+            """;
+
+        try {
+            Connection connection = DBconnection.getConnection();
+
+            PreparedStatement preparedStatementBuscar = connection.prepareStatement(sqlBuscar);
+            preparedStatementBuscar.setInt(1, idRutina);
+            preparedStatementBuscar.setInt(2, orden);
+
+            ResultSet resultSet = preparedStatementBuscar.executeQuery();
+
+            if (resultSet.next()) {
+
+                String nombreEjercicio = resultSet.getString("nombre");
+
+                PreparedStatement preparedStatementDelete = connection.prepareStatement(sqlDelete);
+                preparedStatementDelete.setInt(1, idRutina);
+                preparedStatementDelete.setInt(2, orden);
+
+                preparedStatementDelete.executeUpdate();
+
+                System.out.println("Ejercicio " + nombreEjercicio + " eliminado correctamente.");
+
+                reordenarRutina(idRutina);
+
+            } else {
+                System.out.println("No existe ningún ejercicio con ese orden en la rutina.");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al eliminar ejercicio.");
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void reordenarRutina(int idRutina) {
+
+        String sqlSelect = """
+            SELECT id_ejercicio
+            FROM rutina_ejercicio
+            WHERE id_rutina = ?
+            ORDER BY orden
+            """;
+
+        String sqlUpdate = """
+            UPDATE rutina_ejercicio
+            SET orden = ?
+            WHERE id_rutina = ?
+            AND id_ejercicio = ?
+            """;
+
+        try {
+            Connection connection = DBconnection.getConnection();
+
+            PreparedStatement preparedStatementSelected = connection.prepareStatement(sqlSelect);
+            preparedStatementSelected.setInt(1, idRutina);
+
+            ResultSet rs = preparedStatementSelected.executeQuery();
+
+            int nuevoOrden = 1;
+
+            while (rs.next()) {
+
+                int idEjercicio = rs.getInt("id_ejercicio");
+
+                PreparedStatement preparedStatementUpdate = connection.prepareStatement(sqlUpdate);
+                preparedStatementUpdate.setInt(1, nuevoOrden);
+                preparedStatementUpdate.setInt(2, idRutina);
+                preparedStatementUpdate.setInt(3, idEjercicio);
+
+                preparedStatementUpdate.executeUpdate();
+
+                nuevoOrden++;
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al reordenar la rutina.");
+            System.out.println(e.getMessage());
+        }
+    }
 }
