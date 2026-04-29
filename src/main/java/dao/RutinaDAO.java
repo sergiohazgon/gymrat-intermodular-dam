@@ -258,4 +258,40 @@ public class RutinaDAO {
             System.out.println(e.getMessage());
         }
     }
+
+    public void eliminarRutina(int idRutina) {
+
+        String sqlEliminarEjercicios = """
+            DELETE FROM rutina_ejercicio
+            WHERE id_rutina = ?
+            """;
+
+        String sqlEliminarRutina = """
+            DELETE FROM rutina
+            WHERE id_rutina = ?
+            """;
+
+        try {
+            Connection connection = DBconnection.getConnection();
+
+            PreparedStatement preparedStatementEjercicios = connection.prepareStatement(sqlEliminarEjercicios);
+            preparedStatementEjercicios.setInt(1, idRutina);
+            preparedStatementEjercicios.executeUpdate();
+
+            PreparedStatement preparedStatementRutina = connection.prepareStatement(sqlEliminarRutina);
+            preparedStatementRutina.setInt(1, idRutina);
+
+            int filas = preparedStatementRutina.executeUpdate();
+
+            if (filas > 0) {
+                System.out.println("Rutina eliminada correctamente.");
+            } else {
+                System.out.println("No existe ninguna rutina con ese id.");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al eliminar rutina.");
+            System.out.println(e.getMessage());
+        }
+    }
 }
