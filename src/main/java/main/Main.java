@@ -144,7 +144,17 @@ public class Main {
                     break;
 
                 case 7:
-                    System.out.println("Crear rutina...");
+
+                    System.out.println("\n--- Crear rutina ---");
+
+                    System.out.print("Nombre de la rutina: ");
+                    String nombreRutina = sc.nextLine();
+
+                    System.out.print("Objetivo: ");
+                    String objetivoRutina = sc.nextLine();
+
+                    rutinaDAO.crearRutina(nombreRutina, objetivoRutina);
+
                     break;
 
                 case 8:

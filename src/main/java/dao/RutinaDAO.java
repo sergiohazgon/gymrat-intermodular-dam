@@ -232,4 +232,30 @@ public class RutinaDAO {
             System.out.println(e.getMessage());
         }
     }
+
+    public void crearRutina(String nombre, String objetivo) {
+
+        String sql = """
+            INSERT INTO rutina (nombre, objetivo)
+            VALUES (?, ?)
+            """;
+
+        try {
+            Connection connection = DBconnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setString(1, nombre);
+            preparedStatement.setString(2, objetivo);
+
+            int filas = preparedStatement.executeUpdate();
+
+            if (filas > 0) {
+                System.out.println("Rutina creada correctamente.");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al crear rutina");
+            System.out.println(e.getMessage());
+        }
+    }
 }
