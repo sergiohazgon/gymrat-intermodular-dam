@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <!-- Catálogo de ejercicios -->
+    <xs:element name="gymrat">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ejercicios">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="ejercicio" minOccurs="1" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="nombre" type="xs:string"/>
+                                        <xs:element name="grupoMuscular" type="xs:string"/>
+                                        <xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+                                        <xs:element name="urlVideo" type="xs:anyURI" minOccurs="0"/>
+                                    </xs:sequence>
+                                    <xs:attribute name="id" type="xs:positiveInteger" use="required"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <!-- Rutinas con sus ejercicios asignados -->
+                <xs:element name="rutinas">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="rutina" minOccurs="1" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="nombre" type="xs:string"/>
+                                        <xs:element name="objetivo" type="xs:string" minOccurs="0"/>
+                                        <xs:element name="fechaCreacion" type="xs:date"/>
+                                        <!-- Tabla intermedia rutina_ejercicio -->
+                                        <xs:element name="ejerciciosAsignados">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="ejercicioAsignado" minOccurs="0" maxOccurs="unbounded">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="series" type="xs:positiveInteger"/>
+                                                                <xs:element name="repeticiones" type="xs:positiveInteger"/>
+                                                                <xs:element name="orden" type="xs:positiveInteger"/>
+                                                            </xs:sequence>
+                                                            <!-- Referencia al id del ejercicio del catálogo -->
+                                                            <xs:attribute name="idEjercicio" type="xs:positiveInteger" use="required"/>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="id" type="xs:positiveInteger" use="required"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

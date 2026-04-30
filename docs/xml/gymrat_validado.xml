@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gymrat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="gymrat.xsd">
+    <ejercicios>
+        <ejercicio id="1">
+            <nombre>Press banca</nombre>
+            <grupoMuscular>Pecho</grupoMuscular>
+            <descripcion>Ejercicio básico para pectoral con barra</descripcion>
+            <urlVideo>https://www.youtube.com/results?search_query=press+banca</urlVideo>
+        </ejercicio>
+        <ejercicio id="2">
+            <nombre>Press inclinado mancuernas</nombre>
+            <grupoMuscular>Pecho</grupoMuscular>
+            <descripcion>Trabajo de pecho superior</descripcion>
+            <urlVideo>https://www.youtube.com/results?search_query=press+inclinado+mancuernas</urlVideo>
+        </ejercicio>
+        <ejercicio id="7">
+            <nombre>Press militar</nombre>
+            <grupoMuscular>Hombro</grupoMuscular>
+            <descripcion>Ejercicio de empuje vertical</descripcion>
+            <urlVideo>https://www.youtube.com/results?search_query=press+militar</urlVideo>
+        </ejercicio>
+    </ejercicios>
+
+    <rutinas>
+        <rutina id="1">
+            <nombre>Push Day</nombre>
+            <objetivo>Hipertrofia torso</objetivo>
+            <fechaCreacion>2026-04-22</fechaCreacion>
+            <ejerciciosAsignados>
+                <ejercicioAsignado idEjercicio="1">
+                    <series>4</series>
+                    <repeticiones>8</repeticiones>
+                    <orden>1</orden>
+                </ejercicioAsignado>
+                <ejercicioAsignado idEjercicio="2">
+                    <series>3</series>
+                    <repeticiones>10</repeticiones>
+                    <orden>2</orden>
+                </ejercicioAsignado>
+                <ejercicioAsignado idEjercicio="7">
+                    <series>4</series>
+                    <repeticiones>8</repeticiones>
+                    <orden>3</orden>
+                </ejercicioAsignado>
+            </ejerciciosAsignados>
+        </rutina>
+    </rutinas>
+</gymrat>
