@@ -69,28 +69,28 @@ public class Main {
                     break;
 
                 case 4:
-                    ArrayList<Rutina> rutinas = rutinaDAO.listarRutinas();
+                                  ArrayList<Rutina> rutinas = rutinaDAO.listarRutinas();
 
-                    System.out.println("--- Rutinas disponibles ---");
+                System.out.println("\n--- Rutinas disponibles ---");
 
-                    for (int i = 0; i < rutinas.size(); i++) {
-                        System.out.println((i + 1) + ". " + rutinas.get(i).getNombre());
-                    }
+                for (int i = 0; i < rutinas.size(); i++) {
+                    System.out.println((i + 1) + ". " + rutinas.get(i).getNombre());
+                }
 
-                    System.out.print("Elige una rutina: ");
-                    opcion = sc.nextInt();
-                    sc.nextLine();
+                System.out.print("Elige una rutina: ");
+                int opcionRutina = sc.nextInt();
+                sc.nextLine();
 
-                    if (opcion < 1 || opcion > rutinas.size()) {
-                        System.out.println("Opción inválida");
-                        break;
-                    }
-
-                    int idRutina = rutinas.get(opcion - 1).getIdRutina();
-
-                    rutinaDAO.mostrarEjerciciosDeRutina(idRutina);
-
+                if (opcionRutina < 1 || opcionRutina > rutinas.size()) {
+                    System.out.println("Opción inválida");
                     break;
+                }
+
+                int idRutina = rutinas.get(opcionRutina - 1).getIdRutina();
+
+                rutinaDAO.mostrarEjerciciosDeRutina(idRutina);
+
+                break;
 
                 case 5:
 
@@ -103,15 +103,15 @@ public class Main {
                     }
 
                     System.out.print("Elige una rutina: ");
-                    opcion = sc.nextInt();
+                    opcionRutina = sc.nextInt();
                     sc.nextLine();
 
-                    if (opcion < 1 || opcion > rutinasInsertar.size()) {
+                    if (opcionRutina < 1 || opcionRutina > rutinasInsertar.size()) {
                         System.out.println("Opción inválida");
                         break;
                     }
 
-                    int idRutinaInsertar = rutinasInsertar.get(opcion - 1).getIdRutina();
+                    int idRutinaInsertar = rutinasInsertar.get(opcionRutina - 1).getIdRutina();
 
                     String continuar;
 
@@ -171,15 +171,15 @@ public class Main {
                     }
 
                     System.out.print("Elige una rutina: ");
-                    opcion = sc.nextInt();
+                    opcionRutina = sc.nextInt();
                     sc.nextLine();
 
-                    if (opcion < 1 || opcion > rutinasEliminarEjercicio.size()) {
+                    if (opcionRutina < 1 || opcionRutina > rutinasEliminarEjercicio.size()) {
                         System.out.println("Opción inválida");
                         break;
                     }
 
-                    int idRutinaEliminar = rutinasEliminarEjercicio.get(opcion - 1).getIdRutina();
+                    int idRutinaEliminar = rutinasEliminarEjercicio.get(opcionRutina - 1).getIdRutina();
 
                     rutinaDAO.mostrarEjerciciosDeRutina(idRutinaEliminar);
 
@@ -216,15 +216,15 @@ public class Main {
                     }
 
                     System.out.print("Elige una rutina a eliminar: ");
-                    opcion = sc.nextInt();
+                    opcionRutina = sc.nextInt();
                     sc.nextLine();
 
-                    if (opcion < 1 || opcion > rutinasEliminar.size()) {
+                    if (opcionRutina < 1 || opcionRutina > rutinasEliminar.size()) {
                         System.out.println("Opción inválida");
                         break;
                     }
 
-                    idRutinaEliminar = rutinasEliminar.get(opcion - 1).getIdRutina();
+                    idRutinaEliminar = rutinasEliminar.get(opcionRutina - 1).getIdRutina();
 
                     rutinaDAO.eliminarRutina(idRutinaEliminar);
 
