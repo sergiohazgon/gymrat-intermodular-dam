@@ -7,6 +7,7 @@ import model.Ejercicio;
 import model.Rutina;
 
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -68,71 +69,117 @@ public class Main {
                     break;
 
                 case 4:
-                    System.out.print("Introduce el id de la rutina: ");
-                    int idRutina = sc.nextInt();
+                    ArrayList<Rutina> rutinas = rutinaDAO.listarRutinas();
+
+                    System.out.println("--- Rutinas disponibles ---");
+
+                    for (int i = 0; i < rutinas.size(); i++) {
+                        System.out.println((i + 1) + ". " + rutinas.get(i).getNombre());
+                    }
+
+                    System.out.print("Elige una rutina: ");
+                    opcion = sc.nextInt();
                     sc.nextLine();
 
+                    if (opcion < 1 || opcion > rutinas.size()) {
+                        System.out.println("Opción inválida");
+                        break;
+                    }
+
+                    int idRutina = rutinas.get(opcion - 1).getIdRutina();
+
                     rutinaDAO.mostrarEjerciciosDeRutina(idRutina);
+
                     break;
 
                 case 5:
+
+                    ArrayList<Rutina> rutinasInsertar = rutinaDAO.listarRutinas();
+
                     System.out.println("\n--- Rutinas disponibles ---");
-                    for (Rutina rutina : rutinaDAO.listarRutinas()) {
-                        System.out.println(rutina);
+
+                    for (int i = 0; i < rutinasInsertar.size(); i++) {
+                        System.out.println((i + 1) + ". " + rutinasInsertar.get(i).getNombre());
                     }
 
-
-                    System.out.print("Introduce el id de la rutina: ");
-                    int idRutinaInsertar = sc.nextInt();
+                    System.out.print("Elige una rutina: ");
+                    opcion = sc.nextInt();
                     sc.nextLine();
+
+                    if (opcion < 1 || opcion > rutinasInsertar.size()) {
+                        System.out.println("Opción inválida");
+                        break;
+                    }
+
+                    int idRutinaInsertar = rutinasInsertar.get(opcion - 1).getIdRutina();
 
                     String continuar;
 
                     do {
-                    System.out.println("\n--- Ejercicios disponibles ---");
-                    for (Ejercicio ejercicio : ejercicioDAO.listarEjercicios()) {
-                        System.out.println(ejercicio);
-                    }
+                        System.out.println("\n--- Ejercicios disponibles ---");
 
-                    System.out.print("Introduce el id del ejercicio: ");
-                    int idEjercicioAgregar = sc.nextInt();
-                    sc.nextLine();
+                        ArrayList<Ejercicio> ejercicios = ejercicioDAO.listarEjercicios();
 
-                    System.out.print("Series: ");
-                    int series = sc.nextInt();
-                    sc.nextLine();
+                        for (Ejercicio ejercicio : ejercicios) {
+                            System.out.println(ejercicio);
+                        }
 
-                    System.out.print("Repeticiones: ");
-                    int repeticiones = sc.nextInt();
-                    sc.nextLine();
+                        System.out.print("Introduce el id del ejercicio: ");
+                        int idEjercicioAgregar = sc.nextInt();
+                        sc.nextLine();
 
-                    System.out.print("Orden en la rutina: ");
-                    int orden = sc.nextInt();
-                    sc.nextLine();
+                        System.out.print("Series: ");
+                        int series = sc.nextInt();
+                        sc.nextLine();
 
-                    rutinaDAO.insertarEjercicioRutina(
-                            idRutinaInsertar,
-                            idEjercicioAgregar,
-                            series,
-                            repeticiones,
-                            orden
-                    );
-                    System.out.print("¿Quieres añadir otro ejercicio a esta rutina? (si/no): ");
-                    continuar = sc.nextLine().toLowerCase();
+                        System.out.print("Repeticiones: ");
+                        int repeticiones = sc.nextInt();
+                        sc.nextLine();
 
-            } while (continuar.equalsIgnoreCase("si"));
+                        System.out.print("Orden en la rutina: ");
+                        int orden = sc.nextInt();
+                        sc.nextLine();
 
+                        rutinaDAO.insertarEjercicioRutina(
+                                idRutinaInsertar,
+                                idEjercicioAgregar,
+                                series,
+                                repeticiones,
+                                orden
+                        );
+                        do {
+                            System.out.print("¿Quieres añadir otro ejercicio a esta rutina? (si/no): ");
+                            continuar = sc.nextLine().toLowerCase();
+
+                            if (!continuar.equals("si") && !continuar.equals("no")) {
+                                System.out.println("Introduce 'si' o 'no'");
+                            }
+
+                        } while (!continuar.equals("si") && !continuar.equals("no"));
+
+                    } while (continuar.equals("si"));
                     break;
 
                 case 6:
+
+                    ArrayList<Rutina> rutinasEliminarEjercicio = rutinaDAO.listarRutinas();
+
                     System.out.println("\n--- Rutinas disponibles ---");
-                    for (Rutina rutina : rutinaDAO.listarRutinas()) {
-                        System.out.println(rutina);
+
+                    for (int i = 0; i < rutinasEliminarEjercicio.size(); i++) {
+                        System.out.println((i + 1) + ". " + rutinasEliminarEjercicio.get(i).getNombre());
                     }
 
-                    System.out.print("Introduce el id de la rutina: ");
-                    int idRutinaEliminar = sc.nextInt();
+                    System.out.print("Elige una rutina: ");
+                    opcion = sc.nextInt();
                     sc.nextLine();
+
+                    if (opcion < 1 || opcion > rutinasEliminarEjercicio.size()) {
+                        System.out.println("Opción inválida");
+                        break;
+                    }
+
+                    int idRutinaEliminar = rutinasEliminarEjercicio.get(opcion - 1).getIdRutina();
 
                     rutinaDAO.mostrarEjerciciosDeRutina(idRutinaEliminar);
 
@@ -159,16 +206,27 @@ public class Main {
                     break;
 
                 case 8:
+
+                    ArrayList<Rutina> rutinasEliminar = rutinaDAO.listarRutinas();
+
                     System.out.println("\n--- Rutinas disponibles ---");
-                    for (Rutina rutina : rutinaDAO.listarRutinas()) {
-                        System.out.println(rutina);
+
+                    for (int i = 0; i < rutinasEliminar.size(); i++) {
+                        System.out.println((i + 1) + ". " + rutinasEliminar.get(i).getNombre());
                     }
 
-                    System.out.print("Introduce el id de la rutina que quieres eliminar: ");
-                    int idRutinaEliminarCompleta = sc.nextInt();
+                    System.out.print("Elige una rutina a eliminar: ");
+                    opcion = sc.nextInt();
                     sc.nextLine();
 
-                    rutinaDAO.eliminarRutina(idRutinaEliminarCompleta);
+                    if (opcion < 1 || opcion > rutinasEliminar.size()) {
+                        System.out.println("Opción inválida");
+                        break;
+                    }
+
+                    idRutinaEliminar = rutinasEliminar.get(opcion - 1).getIdRutina();
+
+                    rutinaDAO.eliminarRutina(idRutinaEliminar);
 
                     break;
 
