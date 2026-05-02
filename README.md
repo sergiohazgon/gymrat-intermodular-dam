@@ -14,13 +14,24 @@ Muchas personas entrenan sin una planificación clara. GymRat busca ofrecer una 
 - Git y GitHub
 
 ## Estado del proyecto
-Proyecto en fase 2 implementar la base funcional de la aplicación.
+Proyecto funcional con versión MVP completada. Permite gestionar ejercicios, rutinas y conexión con base de datos MySQL
 
 ## Estructura del repositorio
-- `/src` → código fuente
-- `/sql` → scripts de base de datos
-- `/docs` → documentación del proyecto
-- `/diagrams` → diagramas y esquemas
+gymrat-intermodular-dam/
+├── src/main/java/
+│   ├── dao/          → EjercicioDAO, RutinaDAO
+│   ├── database/     → DBconnection
+│   ├── model/        → Ejercicio, Rutina, RutinaEjercicio
+│   └── main/         → Main
+├── sql/              → scripts de creación e inserción de datos
+├── docs/
+│   ├── bbdd/         → diagrama E/R, modelo relacional y análisis
+│   ├── xml/          → gymrat.xml, gymrat.xsd y evidencias de validación
+│   ├── sistemas/     → informe técnico del entorno
+│   ├── empleabilidad/→ perfil profesional, investigacion sector y reflexión personal
+│   └── scrum/        → backlog y planificación de sprints
+├── pom.xml
+└── README.md
 
 ## Autor
 Proyecto realizado por Sergio Hernández González para el Proyecto Intermodular de 1º DAM.
