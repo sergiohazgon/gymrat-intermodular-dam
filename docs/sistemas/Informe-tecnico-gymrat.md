@@ -22,13 +22,14 @@ siempre que tengas Java y MySQL instalados.
 
 ## ¿Cómo se instala?
 
-**1. Instalar Java (JDK 17 o superior)**
+**1. Instalar Java (JDK 23 o superior)**
 
 Descárgalo desde la página de Oracle e instálalo. Para comprobar que está bien en la terminal:
 
-bash
-java -version
 
+```bash
+java -version
+```
 
 **2. Instalar MySQL**
 
@@ -81,11 +82,13 @@ Esto garantiza compatibilidad y seguridad.
 
 ### Copias de seguridad
 
-Antes de realizar cambios importantes en la base de datos, es recomendable hacer una copia de seguridad fuera del repositorio.
+Antes de realizar cambios importantes en la base de datos, es recomendable hacer una copia de seguridad fuera del repositorio
 
-bash
+
+```bash
 cd ~/Documents/backups
 mysqldump -u root -p gymrat > gymrat_backup.sql
+```
 
 ## ¿Cómo se protege?
 
