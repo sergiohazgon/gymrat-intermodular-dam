@@ -106,7 +106,7 @@ de la base de datos periódicamente.
 
 El proyecto está organizado en distintas carpetas para separar código, documentación, scripts SQL y recursos del sistema.
 
-
+```text
 gymrat-intermodular-dam/
 ├── docs/
 │   ├── bbdd/
@@ -124,6 +124,7 @@ gymrat-intermodular-dam/
 │           └── model/
 ├── pom.xml
 └── README.md
+```
 
 ## Esquema del sistema
 

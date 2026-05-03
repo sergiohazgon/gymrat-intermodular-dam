@@ -34,6 +34,7 @@ gymrat-intermodular-dam/
 │   └── scrum/        → backlog y planificación de sprints
 ├── pom.xml
 └── README.md
+```
 
 ## Autor
 Proyecto realizado por Sergio Hernández González para el Proyecto Intermodular de 1º DAM.
