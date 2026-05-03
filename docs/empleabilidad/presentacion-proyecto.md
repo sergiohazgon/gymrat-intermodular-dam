@@ -1,22 +1,36 @@
-## Presentación profesional del proyecto
+# Presentación profesional del proyecto
 
-GymRat es una aplicación de consola desarrollada en Java que permite gestionar rutinas de entrenamiento y ejercicios.
+## ¿Qué es GymRat?
 
-El problema que resuelve es la organización de entrenamientos, permitiendo al usuario crear rutinas personalizadas, añadir ejercicios, eliminarlos y consultarlos.
+GymRat es una aplicación de consola en Java para gestionar rutinas de entrenamiento.
+Permite crear rutinas, añadirles ejercicios con sus series y repeticiones, consultarlas
+y eliminarlas. Todo se guarda en una base de datos MySQL.
 
-Está pensado para usuarios que entrenan de forma habitual y necesitan organizar sus rutinas de forma sencilla.
+## ¿Qué problema resuelve?
 
-Tecnologías utilizadas:
+Mucha gente que va al gimnasio entrena sin tener sus rutinas organizadas en ningún
+sitio. GymRat es una solución sencilla para tenerlo todo guardado y poder consultarlo
+cuando quieras.
 
-- Java
+## ¿Para quién está pensado?
+
+Para cualquier persona que entrene y quiera llevar un registro básico de sus rutinas
+sin depender de apps de pago ni papel.
+
+## Tecnologías utilizadas
+
+- Java 17
 - MySQL
 - JDBC
 - Maven
+- XML / XSD
 
-Durante el desarrollo del proyecto he aprendido:
+## ¿Qué he aprendido desarrollándolo?
 
-- Conexión entre Java y bases de datos mediante JDBC
-- Diseño de base de datos relacional
-- Uso de patrones como DAO
-- Gestión de proyectos con Maven
-- Organización de código en capas
+Lo más importante ha sido entender cómo conectar una aplicación Java con una base
+de datos real. Al principio configurar todo fue bastante frustrante, el proyecto,
+el driver JDBC, las primeras consultas que no devolvían lo que esperaba... pero
+cuando empezó a funcionar de verdad fue cuando más aprendí. También ha sido la 
+primera vez que desarrollo un proyecto de principio a fin y se nota la diferencia
+respecto a simplemente programar, toda la documentacion, diagramas, el conjunto de
+todo el proyecto es lo que mas me ha gustado.
