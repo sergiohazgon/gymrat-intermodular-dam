@@ -1,6 +1,6 @@
-# Product Backlog - GymRat\
+# Product Backlog - GymRat
 
-## Lista inicial de tareas\
+## Lista inicial de tareas
 - Definir la idea del proyecto
 - Crear repositorio y estructura de carpetas
 - Redactar README inicial

@@ -17,6 +17,8 @@ Muchas personas entrenan sin una planificación clara. GymRat busca ofrecer una 
 Proyecto funcional con versión MVP completada. Permite gestionar ejercicios, rutinas y conexión con base de datos MySQL
 
 ## Estructura del repositorio
+
+```text
 gymrat-intermodular-dam/
 ├── src/main/java/
 │   ├── dao/          → EjercicioDAO, RutinaDAO

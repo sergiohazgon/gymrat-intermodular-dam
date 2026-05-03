@@ -21,6 +21,7 @@ GymRat será una aplicación sencilla que permitirá almacenar ejercicios en una
 - Crear rutinas
 - Añadir ejercicios a una rutina
 - Consultar rutinas guardadas
+- Eliminar Rutinas
 
 ## Posibles mejoras futuras
 - Guardar series y repeticiones
