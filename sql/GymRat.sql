@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 29-04-2026 a las 15:28:53
+-- Tiempo de generación: 03-05-2026 a las 13:52:17
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -71,7 +71,8 @@ INSERT INTO `rutina` (`id_rutina`, `nombre`, `objetivo`, `fecha_creacion`) VALUE
 (2, 'Pull Day', 'Espalda y bíceps', '2026-04-22'),
 (3, 'Leg Day', 'Pierna completa', '2026-04-22'),
 (4, 'Full Body', 'Entrenamiento general', '2026-04-22'),
-(5, 'gis', 'pechito', '2026-04-29');
+(7, 'Tren Superior', 'Entrenar zona superior del cuerpo', '2026-05-01'),
+(8, 'Full Brazos ', 'Fuerza brazos', '2026-05-02');
 
 -- --------------------------------------------------------
 
@@ -100,11 +101,15 @@ INSERT INTO `rutina_ejercicio` (`id_rutina`, `id_ejercicio`, `series`, `repetici
 (2, 8, 3, 12, 2),
 (3, 5, 4, 8, 1),
 (4, 1, 3, 10, 1),
-(4, 2, 3, 10, 5),
+(4, 2, 3, 10, 6),
 (4, 3, 3, 10, 2),
-(4, 4, 2, 13, 6),
+(4, 6, 3, 15, 5),
 (4, 7, 3, 12, 4),
-(4, 8, 2, 25, 3);
+(4, 8, 2, 25, 3),
+(7, 1, 3, 12, 1),
+(8, 4, 3, 10, 3),
+(8, 7, 3, 12, 1),
+(8, 8, 3, 12, 2);
 
 --
 -- Índices para tablas volcadas
@@ -137,7 +142,7 @@ ALTER TABLE `rutina_ejercicio`
 -- AUTO_INCREMENT de la tabla `rutina`
 --
 ALTER TABLE `rutina`
-  MODIFY `id_rutina` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_rutina` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Restricciones para tablas volcadas
