@@ -20,7 +20,7 @@ Capturas:
 
 ![Añadir ejercicio a una rutina](captura_añadir_ejercicio.png)
 
-Aprendizaje:
+### Aprendizaje:
 
 Este proyecto me ha permitido adquirir una visión completa del desarrollo de aplicaciones conectadas a bases de datos, abarcando todo el proceso desde el diseño inicial hasta la implementación final. 
 

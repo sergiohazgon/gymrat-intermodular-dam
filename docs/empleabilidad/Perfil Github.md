@@ -1,15 +1,16 @@
 ## Perfil profesional en GitHub
 
-Mi perfil de GitHub se utiliza como portfolio de proyectos desarrollados durante el ciclo formativo.
+Mi GitHub es: https://github.com/sergiohazgon
 
-En él se incluyen proyectos como GymRat, con una estructura clara, uso de buenas prácticas y documentación detallada.
+De momento tiene principalmente el proyecto GymRat, que es el trabajo más completo
+que he hecho hasta ahora. El repositorio está organizado con código, scripts SQL,
+documentación técnica y los archivos XML/XSD del módulo de Lenguajes de Marcas.
 
-El repositorio incluye:
+Cosas que tengo pendientes de mejorar en el perfil:
 
-- Código organizado por capas (DAO, model, etc.)
-- Base de datos exportada
-- Documentación técnica
-- README explicativo
+Añadir una bio clara con lo que estoy aprendiendo y hacia dónde me gustaría ir
+Crear un README de perfil (el archivo especial que aparece en la página principal)
+Seguir subiendo proyectos a medida que avance el ciclo
 
 Repositorio del proyecto:
 https://github.com/sergiohazgon/gymrat-intermodular-dam
